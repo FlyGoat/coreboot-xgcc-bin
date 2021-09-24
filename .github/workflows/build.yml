@@ -3,6 +3,8 @@ on: [push]
 jobs:
   Build-Actions:
     runs-on: ubuntu-latest
+    env:
+      CPUS: 4
     steps:
     - name: Checkout repository and submodules
       uses: actions/checkout@v2
