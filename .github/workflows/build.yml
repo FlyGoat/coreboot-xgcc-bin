@@ -1,0 +1,19 @@
+name: Build
+on: [push]
+jobs:
+  Build-Actions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: Install package
+      run: |
+        sudo apt-get -y install build-essential flex m4 bison gnat
+    - name: Use a stable GNU mirror
+      run: |
+        sed -i 's,https://ftpmirror.gnu.org,https://mirrors.kernel.org/gnu,g' ./coreboot/util/crossgcc/buildgcc
+    - name: Start Building
+      run: |
+        cd coreboot && make crossgcc && make iasl
