@@ -1,3 +1,4 @@
 [submodule "coreboot"]
 	path = coreboot
-	url = https://github.com/coreboot/coreboot.git
+	url = https://github.com/MrChromebox/coreboot.git
+
