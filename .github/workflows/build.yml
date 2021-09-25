@@ -19,3 +19,11 @@ jobs:
     - name: Start Building
       run: |
         cd coreboot && make crossgcc && make iasl
+    - name: Make package
+      run: |
+        tar -cvf ./coreboot-xgcc-bin.tar.gz -C ./coreboot ./util/crossgcc/xgcc
+    - name: Upload package
+      uses: actions/upload-artifact@v2
+      with:
+        name: coreboot-xgcc-bin.tar.gz
+        path: coreboot-xgcc-bin.tar.gz
